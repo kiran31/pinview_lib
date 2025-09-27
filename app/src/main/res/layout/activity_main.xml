@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/mainTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PinView Demo Showcase"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title1"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Password Mode (4-digit, Number)"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mainTitle" />
+
+        <io.github.kiranpatole.pinview.PinView
+            android:id="@+id/pinViewPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title1"
+            app:boxBackgroundColorFilled="#F1E8FF"
+            app:boxCornerRadius="8dp"
+            app:boxHeight="55dp"
+            app:boxSpacing="12dp"
+            app:boxStrokeColorError="#D32F2F"
+            app:boxStrokeColorFocused="#673AB7"
+            app:boxWidth="50dp"
+            app:cursorColor="#673AB7"
+            app:isPassword="true"
+            app:pinCount="4"
+            app:pinInputType="number"
+            app:pinShape="rounded_square"
+            app:showCursor="true" />
+
+        <Button
+            android:id="@+id/errorButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Trigger Error State"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pinViewPassword" />
+
+        <TextView
+            android:id="@+id/title2"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="All Caps Text Input (6-digit, Circle)"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/errorButton" />
+
+        <io.github.kiranpatole.pinview.PinView
+            android:id="@+id/pinViewText"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginTop="8dp"
+            app:boxBackgroundColorFilled="#E0F2F1"
+            app:boxHeight="45dp"
+            app:boxSpacing="4dp"
+            app:boxStrokeColorFocused="#009688"
+            app:boxWidth="45dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title2"
+            app:pinCount="6"
+            app:pinInputType="textCapCharacters"
+            app:pinShape="circle" />
+
+        <TextView
+            android:id="@+id/title3"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Custom Dimensions (5-digit, Square)"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pinViewText" />
+
+        <io.github.kiranpatole.pinview.PinView
+            android:id="@+id/pinViewCustom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title3"
+            app:boxHeight="60dp"
+            app:boxSpacing="16dp"
+            app:boxStrokeColorFocused="#E91E63"
+            app:boxWidth="40dp"
+            app:pinCount="5"
+            app:pinInputType="text"
+            app:pinShape="square"
+            app:pinTextSize="24sp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

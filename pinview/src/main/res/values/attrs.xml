@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PinView">
+        <!-- The number of boxes to display for the PIN -->
+        <attr name="pinCount" format="integer" />
+
+        <!-- The shape of each box -->
+        <attr name="pinShape" format="enum">
+            <enum name="square" value="0" />
+            <enum name="rounded_square" value="1" />
+            <enum name="circle" value="2" />
+        </attr>
+
+        <!-- The color of the box border -->
+        <attr name="boxStrokeColor" format="color" />
+        <!-- The color of the box border when it is focused/active -->
+        <attr name="boxStrokeColorFocused" format="color" />
+        <!-- The color of the box border when in an error state -->
+        <attr name="boxStrokeColorError" format="color" />
+        <!-- The width of the box border -->
+        <attr name="boxStrokeWidth" format="dimension" />
+
+
+        <!-- The background color of each box when filled -->
+        <attr name="boxBackgroundColorFilled" format="color" />
+        <!-- The background color for empty boxes -->
+        <attr name="boxBackgroundColor" format="color" />
+
+        <!-- The color of the text inside the boxes -->
+        <attr name="pinTextColor" format="color" />
+        <!-- The size of the text inside the boxes -->
+        <attr name="pinTextSize" format="dimension" />
+
+        <!-- The space between each box -->
+        <attr name="boxSpacing" format="dimension" />
+
+        <!-- Corner radius for the 'rounded_square' shape -->
+        <attr name="boxCornerRadius" format="dimension" />
+
+        <!-- A custom drawable to be used as the box background -->
+        <attr name="boxBackgroundDrawable" format="reference" />
+
+        <!-- NEW: Specify the exact width of each box -->
+        <attr name="boxWidth" format="dimension" />
+        <!-- NEW: Specify the exact height of each box -->
+        <attr name="boxHeight" format="dimension" />
+
+        <!-- NEW: The type of input allowed -->
+        <attr name="pinInputType" format="enum">
+            <enum name="number" value="0" />
+            <enum name="text" value="1" />
+            <enum name="textCapCharacters" value="2" />
+        </attr>
+
+        <!-- NEW: Hide the text for password mode -->
+        <attr name="isPassword" format="boolean" />
+        <!-- NEW: The character to show in password mode -->
+        <attr name="passwordCharacter" format="string" />
+
+        <!-- NEW: Cursor properties -->
+        <attr name="showCursor" format="boolean" />
+        <attr name="cursorColor" format="color" />
+        <attr name="cursorWidth" format="dimension" />
+
+        <!-- NEW: Allow pre-filling text from XML -->
+        <attr name="pinText" format="string" />
+
+
+    </declare-styleable>
+</resources>
+
