@@ -1,56 +1,52 @@
-Got it ✅ — here’s a **single, clean, copy-paste-ready `README.md` file** you can drop into your repo right away.
-
-No extra explanations — just a polished README file:
+Here’s a clean, well-formatted **README** for your PinView library, including the XML attributes displayed in a proper table format:
 
 ---
 
-````markdown
-# 🔢 PinView for Android
+# PinView for Android
 
-A highly customizable, lightweight, and easy-to-use **PinView** library for Android, written in Kotlin.  
-It provides a single view to handle PIN/OTP entry, removing the need for managing multiple `EditText` views.
+A highly customizable, lightweight, and easy-to-use **PinView** library for Android, written in Kotlin. It provides a single view to handle PIN/OTP entry, removing the need for managing multiple `EditText` views.
 
-> **Tip:** Add a GIF or video of the demo app in action here for better visibility.
+*(Place a GIF or video of the demo app in action here)*
 
 ---
 
 ## ✨ Features
 
-- **Custom Pin Count** – Display any number of boxes.
-- **Flexible Shapes** – Choose between `square`, `rounded_square`, and `circle`, or provide your own `Drawable`.
-- **Size Control** – Specify exact width and height for each box.
-- **Custom Input Types** – Accepts number, text, or textCapCharacters.
-- **Password Mode** – Hide input with a custom character for password entry.
-- **Cursor Support** – Display a blinking cursor for better UX.
-- **Error States** – Programmatically show an error state with custom colors.
-- **Rich Styling** – Customize colors, text size, spacing, stroke width, and corner radius.
-- **Lightweight** – A single view with no external dependencies.
-- **Paste Support** – Automatically handles pasting from the clipboard.
+* **Custom Pin Count**: Display any number of boxes.
+* **Flexible Shapes**: Choose between `square`, `rounded_square`, or `circle`. Or provide your own Drawable.
+* **Size Control**: Specify exact width and height for each box.
+* **Custom Input Types**: Accepts `number`, `text`, or `textCapCharacters`.
+* **Password Mode**: Hide input with a custom character.
+* **Cursor**: Display a blinking cursor for better UX.
+* **Error States**: Programmatically show an error state with custom colors.
+* **Rich Styling**: Customize colors, text size, spacing, stroke width, and corner radius.
+* **Lightweight**: Single view, no external dependencies.
+* **Paste Support**: Automatically handles pasting from the clipboard.
 
 ---
 
 ## ⚙️ Setup
 
-### 1️⃣ Add JitPack Repository
+### 1. Add JitPack Repository
 
-Add the JitPack repository to your **root `settings.gradle.kts`** file:
+Add the JitPack repository to your root `settings.gradle.kts` file:
 
 ```kotlin
 dependencyResolutionManagement {
     repositories {
-        // Other repositories
+        // ... other repositories
         maven { url = uri("https://jitpack.io") }
     }
 }
-````
+```
 
-### 2️⃣ Add the Dependency
+### 2. Add the Dependency
 
-In your **app-level `build.gradle.kts`** file, add:
+Add the dependency to your app's `build.gradle.kts` file:
 
 ```kotlin
 dependencies {
-    implementation("com.github.kiran31:pinview_lib:1.0.0")
+    implementation("com.github.kiranpatole:pinview_lib:1.0.0")
 }
 ```
 
@@ -58,7 +54,9 @@ dependencies {
 
 ## 🛠️ Usage
 
-### XML Example
+### XML Examples
+
+**Basic Number PinView (4-digit)**
 
 ```xml
 <io.github.kiranpatole.pinview.PinView
@@ -66,78 +64,95 @@ dependencies {
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:pinCount="4"
-    app:pinShape="rounded_square"
-    app:boxWidth="48dp"
-    app:boxHeight="48dp"
-    app:cursorVisible="true"
-    app:password="true"
-    app:passwordChar="●" />
+    app:pinInputType="number"
+    app:boxWidth="50dp"
+    app:boxHeight="50dp"
+    app:boxSpacing="10dp"/>
 ```
 
-### Kotlin Example
+**Password PinView with Cursor and Rounded Boxes**
+
+```xml
+<io.github.kiranpatole.pinview.PinView
+    android:id="@+id/pinViewPassword"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:pinCount="6"
+    app:pinShape="rounded_square"
+    app:boxCornerRadius="8dp"
+    app:isPassword="true"
+    app:passwordCharacter="*"
+    app:showCursor="true"
+    app:cursorColor="@color/purple_500"
+    app:boxStrokeColorFocused="@color/purple_500"/>
+```
+
+### Kotlin Usage
 
 ```kotlin
 val pinView = findViewById<PinView>(R.id.pinView)
 
-// Get the entered PIN
-val enteredPin = pinView.getText()
-
-// Clear the PIN
-pinView.clear()
-
-// Show error state
-pinView.showError(true)
+pinView.setOnPinEnteredListener { pin ->
+    if (pin == "1234") {
+        Toast.makeText(this, "Success!", Toast.LENGTH_SHORT).show()
+    } else {
+        Toast.makeText(this, "Incorrect PIN", Toast.LENGTH_SHORT).show()
+        pinView.showErrorState()
+        pinView.clearPin()
+    }
+}
 ```
 
 ---
 
-## 🧩 Customization Options
+## 🧩 All XML Attributes
 
-| Attribute       | Type      | Description                          |
-| --------------- | --------- | ------------------------------------ |
-| `pinCount`      | Integer   | Number of boxes to display           |
-| `pinShape`      | Enum      | `square`, `rounded_square`, `circle` |
-| `boxWidth`      | Dimension | Width of each box                    |
-| `boxHeight`     | Dimension | Height of each box                   |
-| `password`      | Boolean   | Whether to mask input                |
-| `passwordChar`  | String    | Character used for masking           |
-| `cursorVisible` | Boolean   | Show/hide blinking cursor            |
-| `errorColor`    | Color     | Color of box border in error state   |
-
----
-
-## 📸 Demo
-
-> Add a GIF or short video demo here for better visibility.
-> You can record this using [ScreenToGif](https://www.screentogif.com/) or Android Studio's emulator screen recorder.
+| Attribute                | Description                                               | Format    |
+| ------------------------ | --------------------------------------------------------- | --------- |
+| pinCount                 | The number of boxes to display.                           | integer   |
+| pinShape                 | Shape of the boxes: `square`, `rounded_square`, `circle`. | enum      |
+| boxWidth                 | The width of each box.                                    | dimension |
+| boxHeight                | The height of each box.                                   | dimension |
+| boxSpacing               | The space between each box.                               | dimension |
+| pinInputType             | Input type: `number`, `text`, `textCapCharacters`.        | enum      |
+| isPassword               | Hides the input if true.                                  | boolean   |
+| passwordCharacter        | Character to show in password mode.                       | string    |
+| showCursor               | Shows a blinking cursor if true.                          | boolean   |
+| cursorColor              | The color of the cursor.                                  | color     |
+| cursorWidth              | The width of the cursor.                                  | dimension |
+| boxStrokeColor           | Color of the box border.                                  | color     |
+| boxStrokeColorFocused    | Border color of the active box.                           | color     |
+| boxStrokeColorError      | Border color in error state.                              | color     |
+| boxStrokeWidth           | The width of the box border.                              | dimension |
+| boxBackgroundColor       | Background color for empty boxes.                         | color     |
+| boxBackgroundColorFilled | Background color for filled boxes.                        | color     |
+| pinTextColor             | The color of the text inside the boxes.                   | color     |
+| pinTextSize              | The size of the text.                                     | dimension |
+| boxCornerRadius          | Corner radius for `rounded_square` shape.                 | dimension |
+| boxBackgroundDrawable    | A custom drawable for the box background.                 | reference |
 
 ---
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome!
-Feel free to fork this repo, create a branch, and submit a PR.
+Contributions are welcome! If you find a bug or want to add a feature, feel free to open an issue or submit a pull request.
 
 ---
 
 ## ⭐ Support
 
-If you like this library, please **star ⭐ the repository** — it helps others discover it!
+If you find this library helpful, please star ⭐ the repository — it helps others discover it!
 
 ---
 
 ## 📜 License
 
-```
-MIT License
+Copyright 2025 Kiran Patole
 
-Copyright (c) 2025 Kiran Patole
+Licensed under the Apache License, Version 2.0 (the "License");
+You may not use this file except in compliance with the License.
+You may obtain a copy of the License at:
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions: 
-Would you like me to also generate a **sample GIF layout storyboard** (so you can quickly record a short animation for the README + LinkedIn post)?
-```
+[http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+---
