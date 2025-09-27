@@ -1,12 +1,13 @@
 Here’s a clean, well-formatted **README** for your PinView library, including the XML attributes displayed in a proper table format:
 
----
+--
+
 
 # PinView for Android
 
 A highly customizable, lightweight, and easy-to-use **PinView** library for Android, written in Kotlin. It provides a single view to handle PIN/OTP entry, removing the need for managing multiple `EditText` views.
 
-*(Place a GIF or video of the demo app in action here)*
+*(https://github.com/user-attachments/assets/8f14131a-ac28-41d7-96c1-40f0897cfc53)*
 
 ---
 
